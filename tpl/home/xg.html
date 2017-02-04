@@ -1,0 +1,101 @@
+{include file="tpl/home/header.html" pagetitle='查看修改'}
+
+
+  <div class="am-tabs-bd">
+      <form class="am-form" method="post" action="index.php?c=index&m=xg">
+        <fieldset>
+          <div class="am-form-group">
+            <label for="doc-ta-1">举办班级</label>
+            <br>
+            {$data.dclass}
+          </div>
+          <div class="am-form-group">
+            <label for="doc-ta-1">举办地点</label>
+            <input type="text" name="daddress" value="{$data.daddress}" required>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-ta-1">举办时间</label>
+            <br>
+            日期:
+            <select data-am-selected="{ maxHeight: 200}" name="dtime1">
+              <option value="1" {if $data.dtime1 eq "1" } selected="selected" {/if}>1</option>
+              <option value="2" {if $data.dtime1 eq "2" } selected="selected" {/if}>2</option>
+              <option value="3" {if $data.dtime1 eq "3" } selected="selected" {/if}>3</option>
+              <option value="4" {if $data.dtime1 eq "4" } selected="selected" {/if}>4</option>
+              <option value="5" {if $data.dtime1 eq "5" } selected="selected" {/if}>5</option>
+              <option value="6" {if $data.dtime1 eq "6" } selected="selected" {/if}>6</option>
+              <option value="7" {if $data.dtime1 eq "7" } selected="selected" {/if}>7</option>
+              <option value="8" {if $data.dtime1 eq "8" } selected="selected" {/if}>8</option>
+              <option value="9" {if $data.dtime1 eq "9" } selected="selected" {/if}>9</option>
+              <option value="10" {if $data.dtime1 eq "10" } selected="selected" {/if}>10</option>
+              <option value="11" {if $data.dtime1 eq "11" } selected="selected" {/if}>11</option>
+              <option value="12" {if $data.dtime1 eq "12" } selected="selected" {/if}>12</option>
+              <option value="13" {if $data.dtime1 eq "13" } selected="selected" {/if}>13</option>
+              <option value="14" {if $data.dtime1 eq "14" } selected="selected" {/if}>14</option>
+              <option value="15" {if $data.dtime1 eq "15" } selected="selected" {/if}>15</option>
+              <option value="16" {if $data.dtime1 eq "16" } selected="selected" {/if}>16</option>
+              <option value="17" {if $data.dtime1 eq "17" } selected="selected" {/if}>17</option>
+              <option value="18" {if $data.dtime1 eq "18" } selected="selected" {/if}>18</option>
+              <option value="19" {if $data.dtime1 eq "19" } selected="selected" {/if}>19</option>
+              <option value="20" {if $data.dtime1 eq "20" } selected="selected" {/if}>20</option>
+              <option value="21" {if $data.dtime1 eq "21" } selected="selected" {/if}>21</option>
+              <option value="22" {if $data.dtime1 eq "22" } selected="selected" {/if}>21</option>
+              <option value="23" {if $data.dtime1 eq "23" } selected="selected" {/if}>23</option>
+            </select>
+            号
+            <br>
+            时间:
+            <select data-am-selected="{ maxHeight: 200}" name="dtime2">
+              <option value="08" {if $data.dtime2 eq "08" } selected="selected" {/if}>08</option>
+              <option value="09" {if $data.dtime2 eq "09" } selected="selected" {/if}>09</option>
+              <option value="10" {if $data.dtime2 eq "10" } selected="selected" {/if}>10</option>
+              <option value="11" {if $data.dtime2 eq "11" } selected="selected" {/if}>11</option>
+              <option value="12" {if $data.dtime2 eq "12" } selected="selected" {/if}>12</option>
+              <option value="13" {if $data.dtime2 eq "13" } selected="selected" {/if}>13</option>
+              <option value="14" {if $data.dtime2 eq "14" } selected="selected" {/if}>14</option>
+              <option value="15" {if $data.dtime2 eq "15" } selected="selected" {/if}>15</option>
+              <option value="16" {if $data.dtime2 eq "16" } selected="selected" {/if}>16</option>
+              <option value="17" {if $data.dtime2 eq "17" } selected="selected" {/if}>17</option>
+              <option value="18" {if $data.dtime2 eq "18" } selected="selected" {/if}>18</option>
+              <option value="19" {if $data.dtime2 eq "19" } selected="selected" {/if}>19</option>
+              <option value="20" {if $data.dtime2 eq "20" } selected="selected" {/if}>20</option>
+              <option value="21" {if $data.dtime2 eq "21" } selected="selected" {/if}>21</option>
+            </select>
+            时
+            <select data-am-selected name="dtime3">
+              <option value="00" {if $data.dtime3 eq "00" } selected="selected" {/if}>00</option>
+              <option value="15" {if $data.dtime3 eq "15" } selected="selected" {/if}>15</option>
+              <option value="30" {if $data.dtime3 eq "30" } selected="selected" {/if}>30</option>
+              <option value="45" {if $data.dtime3 eq "45" } selected="selected" {/if}>45</option>
+            </select>
+            分
+
+
+          </div>
+          <div class="am-form-group">
+            <label for="doc-ta-1">其他说明</label>
+            <textarea name="dinfor" rows="5" id="doc-ta-1">{$data.dinfor}</textarea>
+          </div>
+          <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+          <input type="hidden" name="uid" value="{$tzsdata.uid}">
+          <span id="xg"></span>
+          
+        </fieldset>
+      </form>
+  </div>
+<script>
+$(function() {
+    var myDate=new Date;
+    var nowd = myDate.getDate();
+    var setd = {$data.dtime1};
+    if (setd-nowd<3) {
+      var xg ='很抱歉，由于班团活动在3天内就要举办了，所以现在无法修改，如有紧急情况，请联系组织组同学';     
+    }else{
+      var xg ='<button type="submit" class="am-btn am-btn-default">修改</button>';
+    }
+    $('#xg').html(xg);
+  });
+
+</script>
+
+{include file="tpl/home/footer.html"}

@@ -1,0 +1,48 @@
+{include file="tpl/home/header.html" pagetitle='首页'}
+<fieldset>
+<form method="post" class="am-form" action="">
+  <label for="email">学号:</label>
+  <input type="text" id="xh" name="xh" value="">
+  <br>
+  <label for="password">密码:</label>
+  <input type="password" id="password" name="password" value="">
+  <br>
+  <label class="am-checkbox">
+    <input type="checkbox" id="savapassword" data-am-ucheck>保存密码
+  </label>
+  <label class="am-checkbox">
+    <input type="checkbox" name="xgz" data-am-ucheck><b>学工组同学登陆</b>
+  </label>
+  <br>
+  请注意，原始默认密码为学号。
+  <div class="am-cf">
+    <button id="login" class="am-btn am-btn-primary">登 录</button>
+  </div>
+</form>
+</fieldset>
+
+
+<script>
+$(function() {
+  var store = $.AMUI.store;
+  //store.clear()
+  if(store.get('xhsava')){
+  var xhdata =store.get('xhsava');
+  var passworddata =store.get('passwordsava');
+  $('#xh').val(xhdata);
+  $('#password').val(passworddata);
+  }
+});
+
+$("#login").click(function() {
+  if ($('#savapassword').is(':checked')) {
+    var store = $.AMUI.store;
+    var xhset =$('#xh').val();
+    var passwordset =$('#password').val();
+    store.set('xhsava',xhset);
+    store.set('passwordsava',passwordset);
+  }
+});
+</script>
+
+{include file="tpl/home/footer.html"}

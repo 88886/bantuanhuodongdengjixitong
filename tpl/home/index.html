@@ -1,0 +1,102 @@
+{include file="tpl/home/header.html" pagetitle='我要登记'}
+  <div class="am-tabs-bd">
+      <form class="am-form" method="post" action="index.php?c=index&m=dj">
+        <fieldset>
+          <div class="am-form-group">
+            <label for="doc-ta-1">举办地点</label>
+            <input type="text" name="daddress" placeholder="举办地点" required/>
+          </div>
+          <div class="am-form-group">
+            <label for="doc-ta-1">举办时间</label>
+            <br>
+            日期:
+            <select id="dtime1" data-am-selected="{ maxHeight: 200,btnWidth: '40%'}" name="dtime1" required>
+              
+            </select>
+            号
+            <br>
+            时间:
+            <select data-am-selected="{ maxHeight: 200,btnWidth: '25%'}" name="dtime2" required>
+              <option value="08">08</option>
+              <option value="09">09</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+            </select>
+            时
+            <select data-am-selected="{ maxHeight: 200,btnWidth: '25%'}" name="dtime3" required>
+              <option value="00">00</option>
+              <option value="15">15</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+            </select>
+            分
+
+
+          </div>
+          <div class="am-form-group">
+            <label for="doc-ta-1">其他说明(选填)</label>
+            <textarea name="dinfor" rows="3" id="doc-ta-1"></textarea>
+          </div>
+          <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+          
+          <div class="am-form-group">
+            <label class="am-checkbox">
+              <input type="checkbox" id="hb" name="hb" data-am-ucheck><b>是否合办</b>
+            </label>
+            <div id="hbshow">
+              <label for="doc-ta-1">请在下发选择其他班级,多个班级请用@分隔。只用说明我们学工组的班级</label>
+              <textarea name="hbclass" rows="3" id="hbclass">{$tzsdata.uclass}@</textarea>
+              <br>
+              {foreach $clsdata as $a}
+              <div class="am-btn-group">
+                <button type="button" class="am-btn am-btn-primary am-round" onclick="showclass('{$a.uclass}');">{$a.uclass}</button>
+              </div>
+              {/foreach}
+            </div>
+          </div>
+          <input type="hidden" name="uid" value="{$tzsdata.uid}">
+          <input type="hidden" name="dclass" value="{$tzsdata.uclass}">
+          <button type="submit" class="am-btn am-btn-default">提交</button>
+        </fieldset>
+      </form>
+  </div>
+<script>
+  $(function() {
+    $('#hbshow').hide();
+    var odtime1=new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23);
+    var nowtime1=(new Date()).getDate();  
+    var odtime1showoption="";
+    for (var i =0; i <= odtime1.length; i++) {
+      if(odtime1[i]>=nowtime1+3){
+        odtime1showoption+="\"<option value=\""+odtime1[i]+"\">"+odtime1[i]+"<\/option>\"";
+      }
+    };
+    $('#dtime1').html(odtime1showoption);
+  });
+
+  $('#hb').click(function() {
+    var $toggleButton = $('#hb');
+    if ($toggleButton.is(':checked')) {
+      $('#hbshow').show();
+    }else{
+      $('#hbshow').hide();
+    }
+  });
+
+function showclass(sclass) {
+  var shclass=sclass+"@";
+  $('#hbclass').append(shclass);
+}
+</script>
+
+{include file="tpl/home/footer.html"}

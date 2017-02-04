@@ -1,0 +1,29 @@
+{config_load file='set.conf'}
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>{$pagetitle|default:''}-{$smarty.config.site_name}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="keywords" content="{$smarty.config.site_keywords}">
+  <meta name="description" content="{$smarty.config.site_description}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="public/assets/css/amazeui.min.css"/>
+  <!--[if lt IE 9]>
+  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+  <script src="public/assets/js/amazeui.ie8polyfill.min.js"></script>
+  <![endif]-->
+  <!--[if (gte IE 9)|!(IE)]><!-->
+  <script src="public/assets/js/jquery.min.js"></script>
+  <!--<![endif]-->
+  <script src="public/assets/js/amazeui.min.js"></script>
+</head>
+<body>
+<header data-am-widget="header" class="am-header am-header-default">
+      <h1 class="am-header-title">
+          <a href="#title-link" class="">{$pagetitle|default:''}</a>
+      </h1>
+</header>

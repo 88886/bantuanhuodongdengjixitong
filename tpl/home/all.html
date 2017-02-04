@@ -1,0 +1,47 @@
+{include file="tpl/home/header.html" pagetitle='所有活动'}
+
+
+
+
+<table class="am-table am-table-bordered am-table-compact am-table-striped am-table-hover">
+    <thead>
+        <tr>
+            <th>班级</th>
+            <th>时间</th>
+            <th>地点</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+    {foreach $all as $a}
+        <tr>
+            <td>{$a.dclass}</td>
+            <td class="am-text-nowrap">{$a.dtime1}号/{$a.dtime2}:{$a.dtime3}分</td>
+            <td class="am-text-nowrap">{$a.daddress}</td>
+            <td class="am-text-nowrap"><button class="am-btn am-btn-default am-btn-xs am-text-secondary"  data-am-modal="{ target: '#doc-modal-{$a.did}'}"><span class="am-icon-pencil-square-o"></span>详情</button></td>
+
+            <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-{$a.did}">
+              <div class="am-modal-dialog">
+                <div class="am-modal-hd">详细信息
+                  <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>X</a>
+                </div>
+                <div class="am-modal-sm">
+                  团支书：{$a.uname}  <br>
+                  联系电话：{$a.utel} <br>
+                  其他说明：{$a.dinfor} <br>
+                  考核人员1:{$a.xname} （电话:{$a.xtel}）<br>
+                  考核人员2:{$a.x2name} （电话:{$a.x2tel}）<br>
+                </div>
+              </div>
+            </div>
+        </tr>
+    {/foreach}
+    </tbody>
+</table>
+
+
+{$page}
+
+
+
+{include file="tpl/home/footer.html"}
